@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A sky-blue ring around a football, on the navy background. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#6CB8EA"
+        android:pathData="M54,25a29,29 0 1,0 0.01,0zM54,30a24,24 0 1,1 -0.01,0z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,31a23,23 0 1,0 0.01,0z" />
+    <path
+        android:fillColor="#0E2240"
+        android:pathData="M54,45L62.6,51.2L59.3,61.3L48.7,61.3L45.4,51.2Z" />
+    <path
+        android:strokeColor="#0E2240"
+        android:strokeWidth="2.2"
+        android:pathData="M54,45L54,32M62.6,51.2L74.8,47.3M59.3,61.3L66.8,71.7M48.7,61.3L41.2,71.7M45.4,51.2L33.2,47.3" />
+</vector>

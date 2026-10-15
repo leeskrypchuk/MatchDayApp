@@ -1,0 +1,51 @@
+plugins {
+    id 'com.android.application'
+}
+
+// GitHub Actions sets GITHUB_RUN_NUMBER, so every build gets a higher version
+// and installs as an update over the previous one.
+def buildNumber = (System.getenv('GITHUB_RUN_NUMBER') ?: '1') as Integer
+
+android {
+    namespace 'app.eaglesmatchday'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'app.eaglesmatchday'
+        minSdk 26
+        targetSdk 34
+        versionCode buildNumber
+        versionName "1.0.${buildNumber}"
+    }
+
+    // One fixed signing key, kept in this (private) repository, so each new
+    // build updates the installed app instead of needing an uninstall.
+    signingConfigs {
+        release {
+            storeFile file('eagles-matchday.jks')
+            storePassword System.getenv('EAGLES_KEYSTORE_PASSWORD') ?: 'eagles-matchday'
+            keyAlias 'eagles'
+            keyPassword System.getenv('EAGLES_KEYSTORE_PASSWORD') ?: 'eagles-matchday'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'androidx.webkit:webkit:1.11.0'
+    implementation 'androidx.core:core:1.13.1'
+}
